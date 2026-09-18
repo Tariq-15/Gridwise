@@ -58,8 +58,8 @@ No secret values are committed. Copy `.env.example` to `.env` and fill in your o
 ## Local quickstart
 
 ```bash
-git clone <this-repo-url>
-cd gridwise-service
+git clone https://github.com/Tariq-15/Gridwise.git
+cd Gridwise
 python -m venv .venv
 source .venv/bin/activate        # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
@@ -132,9 +132,10 @@ A linear program over 24 hours (120 decision variables: grid, solar-used, charge
 
 ## Known limitations
 
-- If both Groq models are simultaneously rate-limited and Gemini's request also fails, that request's notes degrade to `no_op` (schedule stays valid, but loses interpretation credit for that request).
+- If both Groq models are simultaneously rate-limited and the Gemini attempt also fails, that request's notes degrade to `no_op` (schedule stays valid, but loses interpretation credit for that request). Groq is the primary and secondary path; Gemini is a best-effort third attempt only.
 - The fallback heuristic scheduler (used only if the LP itself fails, which should not happen for organizer-valid feasible scenarios) is not guaranteed cost-optimal — it exists purely to guarantee a valid response.
 - `422` semantic validation is intentionally narrow (battery energy bounds only), per the Problem Statement's "422 optional" note.
+- The Render free-tier deployment may spin down when idle; the first request after a period of inactivity can take longer than the p95 latency target while it wakes up.
 
 ## Security
 
