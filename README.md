@@ -4,6 +4,9 @@ BUP CSE Fest 2026 Hackathon — Online Preliminary submission.
 
 One HTTP API service that interprets natural-language campus operator notes with an LLM, deterministically validates the extracted directives, and solves a 24-hour battery/grid/solar linear program to return a valid, cost-minimal energy schedule.
 
+**Live endpoint**: https://gridwise-tmng.onrender.com
+(`GET /health`, `POST /optimize-energy`)
+
 ## Architecture
 
 ```
