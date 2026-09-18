@@ -163,7 +163,9 @@ def run(base_url: str):
     latencies = []
 
     with httpx.Client(timeout=35.0) as client:
-        for case in cases:
+        for i, case in enumerate(cases):
+            if i > 0:
+                time.sleep(3.0)  # stay well under the free-tier LLM token-per-minute budget
             case_id = case["id"]
             t0 = time.monotonic()
             try:
