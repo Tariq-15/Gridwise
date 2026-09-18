@@ -98,7 +98,17 @@ docker run --rm -p 8000:8000 \
 curl http://localhost:8000/health
 ```
 
-Published fallback image: `<dockerhub-user>/gridwise:<tag>` (see submission notes for the exact pinned tag/digest).
+Published fallback image: `tariquzzaman01/gridwise:v1-c2af3b1`
+(digest `sha256:27a6832fcf6e65b6ac2545cf68f40054b8718e4acf8a4f382abe921da757c18b`, also tagged `:latest`).
+
+```bash
+docker pull tariquzzaman01/gridwise:v1-c2af3b1
+docker run --rm -p 8000:8000 \
+  -e LLM_PROVIDER=groq \
+  -e GROQ_API_KEY=your-key-here \
+  tariquzzaman01/gridwise:v1-c2af3b1
+curl http://localhost:8000/health
+```
 
 ## LLM provider strategy
 
